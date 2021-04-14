@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    <span class="fs-5 fw-semibold ms-3">{{ subject }}</span>
+    {% if request.user.level >= 3 %}
+      <a href="{% url 'articles:create_chapter' subject.pk %}" class="small me-3 text-decoration-none text-success">새 챕터</a>
+    {% endif %}
+  </div>
+
+  {# 문제 없으면 문구 출력 #}
+  {% if chapter_datas|length == 0 %}
+    <p class="text-danger fw-normal ms-3 ">아직 {{ subject }}에 등록된 챕터가 없습니다.</p>
+  {% endif %}
+
+  {# scrollspy #}
+  <div data-bs-spy="scroll" data-bs-target="#scrollspy" data-bs-offset="0" class="scrollspy" tabindex="0">
+    {% for chapter_data in chapter_datas %}
+      <div class="border-bottom pb-3 mb-3">
+        {# collapse button #}
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-toggle rounded" data-bs-toggle="collapse" data-bs-target="#chapter-{{ chapter_data.chapter.pk }}" aria-expanded="false" style="color: rgba(0, 0, 0, .65);">
+            {{ chapter_data.chapter }}
+          </button>
+          {% if request.user.level >= 2 %}
+            <a href="{% url 'articles:create' subject.pk chapter_data.chapter.pk %}" class="small me-3 text-decoration-none text-success">새 문제</a>
+          {% endif %}
+        </div>
+
+        {# collapse items #}
+        <div class="collapse mt-3" id="chapter-{{ chapter_data.chapter.pk }}">
+          {% include 'articles/_votes.html' %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

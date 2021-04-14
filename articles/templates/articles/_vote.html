@@ -1,0 +1,46 @@
+{# 활성화됐다면 #}
+{% if action %}
+
+  {# 이미 투표했다면 #}
+  {% if voted %}
+    <a href="{% url 'articles:vote' article.pk %}" class="m-0 p-0 text-decoration-none">
+      <li class="list-group-item list-group-item-action list-group-item-success">
+  
+  {# 투표 안했다면 #}
+  {% else %}
+    <a href="{% url 'articles:vote' article.pk %}" class="m-0 p-0 text-decoration-none text-dark">
+      <li class="list-group-item list-group-item-action">
+
+  {% endif %}
+      {{ article.title }}
+
+      {# 투표인 뱃지 #}
+      <div class="text-end" style="margin-top:-4px">
+        {% for voter in article.voter.all %}
+
+          {% if voted %}
+            <span class="badge bg-success rounded-pill"><small>{{ voter }}</small></span>
+          
+          {% else %}
+            <span class="badge bg-secondary rounded-pill"><small>{{ voter }}</small></span>
+
+          {% endif %}
+        {% endfor %}
+      </div>
+    </li>
+  </a>
+
+{# 활성화 안됐다면 #}
+{% else %}
+  <li class="list-group-item list-group-item-secondary text-black-50">
+    {{ article.title }}
+
+    {# 투표인 뱃지 #}
+    <div class="text-end" style="margin-top:-4px">
+      {% for voter in article.voter.all %}
+        <span class="badge bg-light text-secondary rounded-pill"><small>{{ voter }}</small></span>
+      {% endfor %}
+    </div>
+  </li>
+
+{% endif %}

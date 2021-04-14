@@ -1,0 +1,26 @@
+<li class="mb-1">
+  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+    계정
+  </button>
+
+  {# 로그인 OK #}
+  {% if request.user.is_authenticated %}
+    <div class="collapse" id="account-collapse">
+      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <li><a href="{% url 'accounts:profile' request.user.username %}" class="link-dark rounded">프로필</a></li>
+        <li><a href="{% url 'accounts:edit' %}" class="link-dark rounded">개인정보수정</a></li>
+        <li><a href="{% url 'accounts:logout' %}" class="link-dark rounded">로그아웃</a></li>
+        <li><a href="#" class="link-dark rounded" data-bs-toggle="modal" data-bs-target="#unregisterModal">회원탈퇴</a></li>
+      </ul>
+    </div>
+
+  {# 로그인 NO #}
+  {% else %}
+    <div class="collapse" id="account-collapse">
+      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <li><a href="{% url 'accounts:login' %}" class="link-dark rounded">로그인</a></li>
+        <li><a href="{% url 'accounts:register' %}" class="link-dark rounded">회원가입</a></li>
+      </ul>
+    </div>
+  {% endif %}
+</li>

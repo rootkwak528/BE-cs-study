@@ -1,0 +1,23 @@
+<li class="list-unstyled border-top mb-3"></li>
+
+<div class="row ms-3 pe-3 text-dark">
+  <p class="fw-bold">{{ title }}</p>
+  <ul class="list-group list-group-flush mb-2 ms-3">
+    {% if page_obj|length %}
+      {# article list #}
+      {% for my_article in page_obj %}
+        <li class="list-group-item">
+          <a href="{% url 'articles:chapter' my_article.subject.pk %}" class="text-decoration-none small text-dark">
+            {{ my_article.title|truncatechars:50 }}
+          </a>
+        </li>
+      {% endfor %}
+
+    {% else %}
+      <li class="list-group-item small text-dark">{{ title }}가 없습니다.</li>
+    {% endif %}
+  </ul>
+
+  {# paginator #}
+  {% include 'accounts/_paginator.html' %}
+</div>

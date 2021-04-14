@@ -1,0 +1,25 @@
+{# this is navbar #}
+<div class="p-3 ps-0 bg-white sticky-top" style="width: 320px;">
+
+  {# logo #}
+  <a href="{% url 'index' %}" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    <span class="fs-5 fw-semibold">study_CS()</span>
+  </a>
+  
+  {# menus #}
+  <ul class="list-unstyled ps-0">
+
+    {# home #}
+    {% include '_nav_home.html' %}
+    <li class="border-top my-3"></li>
+
+    {# subject #}
+    {% include '_nav_article.html' %}
+    <li class="border-top my-3"></li>
+
+    {# account #}
+    {% include '_nav_account.html' %}
+  </ul>
+</div>
+
+{% include '_nav_modal.html' %}

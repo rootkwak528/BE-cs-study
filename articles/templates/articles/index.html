@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <img class="img-fluid" src="{{ image_path }}" alt="bg-img">
+
+  {% comment %} <ul class="list-group">
+    {% for data in datas %}
+      <a href="{% url 'articles:chapter' data.subject.id %}" class="list-group-item list-group-item-action">
+        <li class="d-flex justify-content-between align-items-center">
+          {{ data.subject.title }}
+          <span class="badge bg-secondary rounded-pill">{{ data.subject.article_set.all|length }}</span>
+        </li>
+      </a>
+    {% endfor %}
+  </ul> {% endcomment %}
+{% endblock content %}

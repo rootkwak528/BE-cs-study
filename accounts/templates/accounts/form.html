@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  {% with request.resolver_match.url_name as url_name %}
+    <div class="d-flex justify-content-between align-items-center pb-3 mb-3 link-dark border-bottom">
+      <span class="fs-5 fw-semibold ms-3">
+        {% if url_name == 'edit' %}
+          개인정보수정
+        {% elif url_name == 'login' %}
+          로그인
+        {% elif url_name == 'register' %}
+          회원가입
+        {% else %}
+          {{ url_name }}
+        {% endif %}
+      </span>
+    </div>
+    
+    <form action="" method="POST" class="my-4 ms-3">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      
+      <div class="d-flex justify-content-end">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+          {% if url_name == 'edit' %}
+            <a href="{% url 'accounts:password' %}" type="checkbox" class="btn btn-outline-dark">비밀번호변경</a>
+            <button type="submit" class="btn btn-outline-dark">개인정보수정</button>
+
+          {% elif url_name == 'login' %}
+            <button type="submit" class="btn btn-outline-dark">로그인</button>
+
+          {% elif url_name == 'register' %}
+            <button type="submit" class="btn btn-outline-dark">회원가입</button>
+
+          {% else %}
+            <button type="submit" class="btn btn-outline-dark">{{ url_name }}</button>
+            
+          {% endif %}
+        </div>
+      </div>
+    </form>
+  {% endwith %}
+{% endblock content %}

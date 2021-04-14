@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% with request.resolver_match.url_name as url_name %}
+    {# 제목 #}
+    <div class="d-flex justify-content-between align-items-center pb-3 mb-3 link-dark border-bottom">
+      <span class="fs-5 fw-semibold ms-3">
+        {% if url_name == 'this_week' %}
+          이번주 문제
+        {% else %}
+          {{ url_name }}
+        {% endif %}
+      </span>
+    </div>
+
+    {# 본문 (투표문제들) #}
+    {% if articles|length > 0 %}
+      {% for article in articles %}
+
+        {% if url_name == 'this_week' %}
+          {% with action=False %}
+            {% include 'articles/_vote.html' %}
+          {% endwith %}
+
+        {% else %}
+          {# tbd #}
+
+        {% endif %}
+
+      {% endfor %}
+
+    
+    {% else %}
+      <div class="my-1 text-center">
+        {% if url_name == 'this_week' %}
+          아직 이번주 문제가 등록되지 않았습니다.
+
+        {% else %}
+          {# tbd #}
+
+        {% endif %}
+      </div>
+
+    {% endif %}
+  {% endwith %}
+{% endblock content %}

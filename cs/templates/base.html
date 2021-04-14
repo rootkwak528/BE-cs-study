@@ -1,0 +1,56 @@
+{% load bootstrap5 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% bootstrap_css %}
+  <link href="{% static 'sidebars.css' %}" rel="stylesheet">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+  <style>
+    body, article {
+      overflow: scroll;
+    }
+
+    .very-small li {
+      margin: 14px;
+      font-size: 14px;
+      color: red;
+    }
+  </style>
+  <title>study_CS()</title>
+</head>
+<body>
+  <div class="container my-4">
+    <div class="row">
+
+      {# navbar #}
+      <nav class="col-3">
+        {% include 'navbar.html' %}
+      </nav>
+
+      {# article #}
+      <article class="col-9 mt-3">
+        {# 에러메시지 #}
+        {% include '_error.html' %}
+
+        {# main article #}
+        {% block content %}
+        {% endblock content %}
+      </article>
+
+      {# footer #}
+      <footer class="fixed-bottom border-top col-12 py-2 text-center bg-white">
+        {% include 'footer.html' %}
+      </footer>
+    </div>
+  </div>
+  
+  {% bootstrap_javascript %}
+  <script src="https://kit.fontawesome.com/6255667e8c.js" crossorigin="anonymous"></script>
+  <script src="{% static 'sidebars.js' %}"></script>
+</body>
+</html>

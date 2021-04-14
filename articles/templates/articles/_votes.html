@@ -1,0 +1,40 @@
+<ul class="btn-toggle-nav list-group ms-3">
+
+  {# 투표할 문제 있는 경우 #}
+  {% if chapter_data.articles|length > 0 %}
+
+    {# 투표 문제 출력 #}
+    {% for article in chapter_data.articles %}
+
+      {# 비활성화된 투표는 버튼도 비활성화 #}
+      {% if article.is_select %}
+        {% with action=False %}
+          {% include 'articles/_vote.html' %}
+        {% endwith %}
+
+      {# 활성화된 투표 #}
+      {% else %}
+        
+        {# 투표 했다면 버튼 칠하고 뱃지 추가 #}
+        {% if request.user in article.voter.all %}
+          {% with action=True voted=True %}
+            {% include 'articles/_vote.html' %}
+          {% endwith %}
+
+        {# 투표 안 했다면 버튼 초기화 #}
+        {% else %}
+          {% with action=True voted=False %}
+            {% include 'articles/_vote.html' %}
+          {% endwith %}
+        {% endif %}
+
+      {% endif %}
+    {% endfor %}
+
+  {# 투표할 문제 없는 경우 #}
+  {% else %}
+    <div class="my-1 text-center">
+      등록된 문제가 없습니다.
+    </div>
+  {% endif %}
+</ul>
