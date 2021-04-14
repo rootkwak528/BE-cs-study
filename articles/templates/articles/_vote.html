@@ -3,43 +3,120 @@
 
   {# 이미 투표했다면 #}
   {% if voted %}
-    <a href="{% url 'articles:vote' article.pk %}" class="m-0 p-0 text-decoration-none">
-      <li class="list-group-item list-group-item-action list-group-item-success">
-  
+    <li class="list-group-item list-group-item-action list-group-item-success">
   {# 투표 안했다면 #}
   {% else %}
-    <a href="{% url 'articles:vote' article.pk %}" class="m-0 p-0 text-decoration-none text-dark">
-      <li class="list-group-item list-group-item-action">
-
+    <li class="list-group-item list-group-item-action">
   {% endif %}
-      {{ article.title }}
 
-      {# 투표인 뱃지 #}
-      <div class="text-end" style="margin-top:-4px">
-        {% for voter in article.voter.all %}
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          {{ article.title }}
 
+          {# 투표인 뱃지 #}
+          <div style="margin-top:-4px">
+            {% for voter in article.voter.all %}
+              {% if voted %}
+                <span class="badge bg-light text-success rounded-pill"><small>{{ voter.last_name }}{{ voter.first_name }}</small></span>
+              
+              {% else %}
+                <span class="badge bg-light text-secondary rounded-pill"><small>{{ voter.last_name }}{{ voter.first_name }}</small></span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div>
+          {# 투표 했다면 초록색 #}
           {% if voted %}
-            <span class="badge bg-success rounded-pill"><small>{{ voter }}</small></span>
           
-          {% else %}
-            <span class="badge bg-secondary rounded-pill"><small>{{ voter }}</small></span>
+            {# 투표 버튼 #}
+            <div class="text-center d-inline-block ms-2">
+              {% if voted %}
+                <a href="{% url 'articles:vote' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+                  <i class="fas fa-thumbs-up text-success"></i>
+                </a>
+              {% else %}
+                <a href="{% url 'articles:vote' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+                  <i class="far fa-thumbs-up text-success"></i>
+                </a><br>
+              {% endif %}
+            </div>
+            
+            {# 핀 버튼 #}
+            <div class="text-center d-inline-block ms-2">
+              {% if request.user in article.pinner.all %}
+                <a href="{% url 'articles:pin' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+                  <i class="fas fa-bookmark text-success"></i>
+                </a>
+              {% else %}
+                <a href="{% url 'articles:pin' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+                  <i class="far fa-bookmark text-success"></i>
+                </a>
+              {% endif %}
+            </div>
 
+          {# 안 했다면 회색 #}
+          {% else %}
+            {# 투표 버튼 #}
+            <div class="text-center d-inline-block ms-2">
+              {% if voted %}
+                <a href="{% url 'articles:vote' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+                  <i class="fas fa-thumbs-up text-secondary"></i>
+                </a>
+              {% else %}
+                <a href="{% url 'articles:vote' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+                  <i class="far fa-thumbs-up text-secondary"></i>
+                </a><br>
+              {% endif %}
+            </div>
+            
+            {# 핀 버튼 #}
+            <div class="text-center d-inline-block ms-2">
+              {% if request.user in article.pinner.all %}
+                <a href="{% url 'articles:pin' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+                  <i class="fas fa-bookmark text-secondary"></i>
+                </a>
+              {% else %}
+                <a href="{% url 'articles:pin' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+                  <i class="far fa-bookmark text-secondary"></i>
+                </a>
+              {% endif %}
+            </div>
           {% endif %}
-        {% endfor %}
+        </div>
       </div>
     </li>
-  </a>
 
 {# 활성화 안됐다면 #}
 {% else %}
   <li class="list-group-item list-group-item-secondary text-black-50">
-    {{ article.title }}
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        {{ article.title }}
 
-    {# 투표인 뱃지 #}
-    <div class="text-end" style="margin-top:-4px">
-      {% for voter in article.voter.all %}
-        <span class="badge bg-light text-secondary rounded-pill"><small>{{ voter }}</small></span>
-      {% endfor %}
+        {# 투표인 뱃지 #}
+        <div style="margin-top:-4px">
+          {% for voter in article.voter.all %}
+            <span class="badge bg-light text-black-50 rounded-pill"><small>{{ voter.last_name }}{{ voter.first_name }}</small></span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div>
+        {# 핀 버튼 #}
+        <div class="text-center d-inline-block ms-2">
+          {% if request.user in article.pinner.all %}
+            <a href="{% url 'articles:pin' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+              <i class="fas fa-bookmark text-black-50"></i>
+            </a>
+          {% else %}
+            <a href="{% url 'articles:pin' article.pk %}" class="m-0 p-0 text-decoration-none vote-emoji">
+              <i class="far fa-bookmark text-black-50"></i>
+            </a>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </li>
 

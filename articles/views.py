@@ -12,16 +12,16 @@ import random
 
 max_vote = 2
 index_images = [
-    # 'https://images.unsplash.com/photo-1471180625745-944903837c22?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    # 'https://images.unsplash.com/photo-1467106130188-af373dea5412?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80',
-    # 'https://images.unsplash.com/photo-1497278090167-1a9312e6e74c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
-    # 'https://images.unsplash.com/photo-1590421694065-7c56f3344c2f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzB8fHJlbGF4fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-    # 'https://images.unsplash.com/photo-1597822759274-7718de15a8b9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-    # 'https://images.unsplash.com/photo-1599579519578-d14054a6b57f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
+    'https://images.unsplash.com/photo-1471180625745-944903837c22?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1467106130188-af373dea5412?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80',
+    'https://images.unsplash.com/photo-1497278090167-1a9312e6e74c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
+    'https://images.unsplash.com/photo-1590421694065-7c56f3344c2f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzB8fHJlbGF4fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1597822759274-7718de15a8b9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    'https://images.unsplash.com/photo-1599579519578-d14054a6b57f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
     'https://images.unsplash.com/photo-1560172355-7aef0ac9eb6a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2732&q=80',
-    # 'https://images.unsplash.com/photo-1583279697952-625317da8d00?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-    # 'https://images.unsplash.com/photo-1559613447-aa2ed3e6e6fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=704&q=80',
-    # 'https://images.unsplash.com/photo-1584961630907-3fdb471c2848?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
+    'https://images.unsplash.com/photo-1583279697952-625317da8d00?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    'https://images.unsplash.com/photo-1559613447-aa2ed3e6e6fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=704&q=80',
+    'https://images.unsplash.com/photo-1584961630907-3fdb471c2848?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
 ]
 
 
@@ -76,11 +76,13 @@ def create_chapter(request, subject_pk):
             article = form.save(commit=False)
             article.subject = get_object_or_404(Subject, pk=subject_pk)
             article.save()
-            return redirect('index')
+            return redirect('articles:chapter', subject_pk)
     else:
         form = ChapterForm()
+    subject = get_object_or_404(Subject, pk=subject_pk)
     context = get_index_data()
     context.update({
+        'subject': subject,
         'form': form,
     })
     return render(request, 'articles/form.html', context)
@@ -116,11 +118,13 @@ def create(request, subject_pk, chapter_pk):
             article.subject = get_object_or_404(Subject, pk=subject_pk)
             article.chapter = get_object_or_404(Chapter, pk=chapter_pk)
             article.save()
-            return redirect('index')
+            return redirect('articles:chapter', subject_pk)
     else:
         form = ArticleForm()
+    chapter = get_object_or_404(Chapter, pk=chapter_pk)
     context = get_index_data()
     context.update({
+        'chapter': chapter,
         'form': form,
     })
     return render(request, 'articles/form.html', context)
@@ -152,40 +156,54 @@ def update(request, article_pk):
     return render(request, 'articles/form.html', context)
 
 
+@login_required
 @require_safe
 def vote(request, article_pk):
-    if request.user.is_authenticated:
-        article = get_object_or_404(Article, pk=article_pk)
-        
-        # 권한 체크
-        if request.user.level < 1:
+    article = get_object_or_404(Article, pk=article_pk)
+
+    # 권한 체크
+    if request.user.level < 1:
+        # context update
+        context = get_index_data()
+        context.update(get_chapter_data(article.subject))
+        context.update({
+            'error': '투표 권한이 없습니다. 관리자에게 문의하세요.',
+        })
+        return render(request, 'articles/chapter.html', context)
+
+    # 투표 취소
+    if article.voter.filter(pk=request.user.pk).exists():
+        article.voter.remove(request.user)
+
+    # 투표 추가
+    else:
+        if request.user.voted_articles.filter(chapter=article.chapter, is_select=False).count() < max_vote:
+            article.voter.add(request.user)
+        else:
             # context update
             context = get_index_data()
             context.update(get_chapter_data(article.subject))
             context.update({
-                'error': '투표 권한이 없습니다. 관리자에게 문의하세요.',
+                'error': f'최대 {max_vote}개까지만 투표할 수 있습니다.',
             })
             return render(request, 'articles/chapter.html', context)
+    return redirect('articles:chapter', article.subject.pk)
 
-        # 투표 취소
-        if article.voter.filter(pk=request.user.pk).exists():
-            article.voter.remove(request.user)
 
-        # 투표 추가
-        else:
-            if request.user.voting_articles.filter(chapter=article.chapter, is_select=False).count() < max_vote:
-                article.voter.add(request.user)
-            else:
-                # context update
-                context = get_index_data()
-                context.update(get_chapter_data(article.subject))
-                context.update({
-                    'error': f'최대 {max_vote}개까지만 투표할 수 있습니다.',
-                })
-                return render(request, 'articles/chapter.html', context)
-        return redirect('articles:chapter', article.subject.pk)
+@login_required
+@require_safe
+def pin(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+
+    # 핀 취소
+    if article.pinner.filter(pk=request.user.pk).exists():
+        article.pinner.remove(request.user)
+
+    # 핀 추가
     else:
-        return redirect('accounts:login')
+        article.pinner.add(request.user)
+
+    return redirect('articles:chapter', article.subject.pk)
 
 
 def this_week(request):

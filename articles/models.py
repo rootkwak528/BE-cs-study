@@ -22,8 +22,8 @@ class Chapter(models.Model):
 class Article(models.Model):
     # foreign keys
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, related_name='my_articles')
-    voter = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='voting_articles')
-    pinner = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='pinned_articles')
+    voter = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='voted_articles', blank=True)
+    pinner = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='pinned_articles', blank=True)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE)
 

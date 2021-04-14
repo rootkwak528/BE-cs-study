@@ -22,12 +22,13 @@
       {% bootstrap_form form %}
       
       <div class="d-flex justify-content-end">
-        <div class="btn-group btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+        <div class="btn-group btn-group" role="group" aria-label="Basic checkbox toggle button group">
           {% if url_name == 'edit' %}
-            <a href="{% url 'accounts:password' %}" type="checkbox" class="btn btn-outline-dark">비밀번호변경</a>
+            <a href="{% url 'accounts:password' %}" class="btn btn-outline-dark">비밀번호변경</a>
             <button type="submit" class="btn btn-outline-dark">개인정보수정</button>
 
           {% elif url_name == 'login' %}
+            <a href="{% url 'accounts:register' %}" class="btn btn-outline-dark">회원가입</a>
             <button type="submit" class="btn btn-outline-dark">로그인</button>
 
           {% elif url_name == 'register' %}

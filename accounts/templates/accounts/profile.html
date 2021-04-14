@@ -28,13 +28,13 @@
       </div>
     </div>
 
-    {# 작성한 문제 #}
-    {% with title="작성한 문제" page="page_my" page_obj=page_obj_my %}
+    {# 작성한 주제글 #}
+    {% with title="작성한 주제글" page="page_my" page_obj=page_obj_my %}
       {% include 'accounts/_article_list.html' %}
     {% endwith %}
 
-    {# 작성한 문제 #}
-    {% with title="저장한 문제" page="page_pin" page_obj=page_obj_pin %}
+    {# 작성한 주제글 #}
+    {% with title="저장한 주제글" page="page_pin" page_obj=page_obj_pin %}
       {% include 'accounts/_article_list.html' %}
     {% endwith %}
 

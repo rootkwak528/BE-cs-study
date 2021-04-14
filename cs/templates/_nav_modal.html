@@ -4,19 +4,12 @@
     <div class="modal-content">
       <div class="modal-body">
         <h5 class="modal-title" id="unregisterModalLabel">정말 탈퇴하시겠습니까?</h5>
-
-        {% comment %} <div class="btn-group btn-group-sm" role="group">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
-          <form action="{% url 'accounts:unregister' %}" method="POST">
-            {% csrf_token %}
-            <button type="button" class="btn btn-outline-secondary">회원탈퇴</button>
-          </form>
-        </div> {% endcomment %}
+        
         <div class="mt-3 text-end">
           <button type="button" class="btn" data-bs-dismiss="modal">취소</button>
           <form action="{% url 'accounts:unregister' %}" method="POST" class="d-inline">
             {% csrf_token %}
-            <button class="btn">회원탈퇴</button>
+            <button class="btn text-danger">회원탈퇴</button>
           </form>
         </div>
       </div>

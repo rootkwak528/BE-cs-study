@@ -6,11 +6,11 @@
     <div class="d-flex justify-content-between align-items-center pb-3 mb-3 link-dark border-bottom">
       <span class="fs-5 fw-semibold ms-3">
         {% if url_name == 'create_chapter' %}
-          새 챕터 작성
+          {{ subject }} / 새 챕터 작성
         {% elif url_name == 'create' %}
-          새 문제 작성
+          {{ chapter.subject }} / {{ chapter }} / 새 주제글 작성
         {% elif url_name == 'update' %}
-          문제 수정
+          주제글 수정
         {% else %}
           {{ url_name }}
         {% endif %}
@@ -22,7 +22,7 @@
       {% bootstrap_form form %}
       
       <div class="d-flex justify-content-end">
-        <div class="btn-group btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
+        <div class="btn-group btn-group" role="group" aria-label="Basic checkbox toggle button group">
           {% if url_name == 'create_chapter' %}
             <button type="submit" class="btn btn-outline-dark">작성완료</button>
 

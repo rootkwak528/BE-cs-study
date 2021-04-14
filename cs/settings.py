@@ -26,7 +26,7 @@ SECRET_KEY = '*8u5532e2@ba+6oh^v70aui0j91c-ac+30t5)3awoe+k3+o-oa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'root-cs-vote.herokuapp.com', ]
 
 
 # Application definition
@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'cs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'desno37cl8k0ur',
+        'HOST': 'ec2-18-214-208-89.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'phwydyqibnwaoh',
+        'PASSWORD': '85341be4e4ec0e6e8aee6ca6c7721dd3de72a02fa6d76804f16f4d78f835e0b5',
     }
 }
 
