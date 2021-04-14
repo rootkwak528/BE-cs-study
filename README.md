@@ -1,5 +1,7 @@
 # CS 그룹 스터디 웹 애플리케이션
 
+> URL : https://root-cs-vote.herokuapp.com/
+>
 > written by Root_Kwak on April, 2021
 
 
@@ -13,8 +15,6 @@
 
 
 ## 1. 기능들
-
-> 배포 URL : https://root-cs-vote.herokuapp.com/
 
 ### 1-1. 계정 생성과 로그인
 
