@@ -14,7 +14,7 @@
 
 ## 1. 기능들
 
-> https://root-cs-vote.herokuapp.com/
+> 배포 URL : https://root-cs-vote.herokuapp.com/
 
 ### 1-1. 계정 생성과 로그인
 
