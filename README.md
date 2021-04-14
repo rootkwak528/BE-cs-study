@@ -37,10 +37,13 @@
 # 1. 가상환경 생성 및 실행
 $ python3 -m venv venv
 $ source venv/bin/activate
+
 # 2. 라이브러리 설치
 (venv)$ pip install -r requirements.txt
+
 # 3. DB 마이그레이션 적용
 (venv)$ python manage.py migrate
+
 # 4. 장고 서버 실행
 (venv)$ python manage.py runserver
 ```
